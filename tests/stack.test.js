@@ -27,7 +27,7 @@ test('pushing and popping different datatypes returns correct datatype', () => {
     stack.push({key: "en nyckel!"});
     // Förväntar oss ett objekt, en boolean, en sträng och ett nummer
     expect(typeof stack.pop()).toBe("object");
-    expect(typeof stack.pop()).toBe("string"); // Denna raden är fel
+    expect(typeof stack.pop()).toBe("boolean");
     expect(typeof stack.pop()).toBe("string");
     expect(typeof stack.pop()).toBe("number");
 });

@@ -51,7 +51,7 @@ test('Popping the stack updates top of stack', async () => {
 	let peek = await driver.findElement(By.id('peek'));
 	await peek.click();
 
-	// Hämtar nuvarande värdet som visas på stacken (efter att vi poppat och peekat) och förväntar oss inte "Bananer" längre
+	// Hämtar nuvarande värdet på stacken (efter att vi poppat och peekat) och förväntar oss inte "Bananer" längre
 	let stackAfter = await driver.findElement(By.id('top_of_stack')).getText();
-	expect(stackAfter).toEqual(stackBefore); // Denna raden är fel
+	expect(stackAfter).not.toEqual(stackBefore);
 })
