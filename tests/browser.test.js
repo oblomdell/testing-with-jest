@@ -32,3 +32,26 @@ describe('Clicking "Pusha till stacken"', () => {
 		await alert.accept();
 	});
 });
+
+// Testar om pop uppdaterar vad som visas överst på stacken
+test('Popping the stack updates top of stack', async () => {
+	// Hämtar värdet 'Bananer' från stacken 
+	let stackBefore = await driver.findElement(By.id('top_of_stack')).getText();
+	expect(stackBefore).toEqual("Bananer");
+
+	// Hämtar pop elementet och klickar på det
+	let pop = await driver.findElement(By.id('pop'));
+	await pop.click();
+
+	// Hanterar meddelandet och klickar ok
+	let alert = await driver.switchTo().alert();
+	await alert.accept();
+
+	// Hämtar peek elementet och klickar på det
+	let peek = await driver.findElement(By.id('peek'));
+	await peek.click();
+
+	// Hämtar nuvarande värdet som visas på stacken (efter att vi poppat och peekat) och förväntar oss inte "Bananer" längre
+	let stackAfter = await driver.findElement(By.id('top_of_stack')).getText();
+	expect(stackAfter).toEqual(stackBefore); // Denna raden är fel
+})
